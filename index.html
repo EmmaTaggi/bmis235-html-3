@@ -33,12 +33,155 @@
 <p>On this website, I share my interest in running, including my training, nutrition, and competitions. I hope you enjoy exploring my running world!</p>
   <p>Learn more about my university: <a href="https://www.gonzaga.edu">Gonzaga</a>.</p>
 
-<p>Want to contact me? <a href="etaggipadro@zagmail.gonzaga.edu">Email me</a>.</p>
+<p>Want to contact me? <a href="mailto:etaggipadro@zagmail.gonzaga.edu">Email me</a>.</p>
 
-<!-- ===== SAVE THIS SPACE ==============================================
-     This box is empty on purpose. Leave it here. We will use it later.
-     ===================================================================== -->
-<div class="showcase"></div>
+<!-- Interactive running graphic -->
+  <!-- HTML: Interactive running workout cards -->
+<div class="showcase">
+    <div class="showcase-header">
+        <h2>My Running Week 🏃‍♀️</h2>
+        <p>Click on a workout to discover more!</p>
+    </div>
+
+    <div class="showcase-workouts">
+        <button class="showcase-card" data-workout="easy">
+            🌸<br>Easy Run
+        </button>
+
+        <button class="showcase-card" data-workout="intervals">
+            ⚡<br>Intervals
+        </button>
+
+        <button class="showcase-card" data-workout="long">
+            🌷<br>Long Run
+        </button>
+
+        <button class="showcase-card" data-workout="strength">
+            💛<br>Strength
+        </button>
+    </div>
+
+    <div class="showcase-info" aria-live="polite">
+        <h3 id="showcase-title">Easy Run 🌸</h3>
+        <p id="showcase-description">
+            Easy runs help build endurance while allowing your body to recover.
+            The pace should feel comfortable.
+        </p>
+    </div>
+</div>
+
+<!-- CSS: Styles only the interactive graphic -->
+<style>
+.showcase {
+    font-family: "Trebuchet MS", Arial, sans-serif;
+    background-color: #F8DDE7;
+    color: #292929;
+    padding: 20px;
+    border-radius: 18px;
+    max-width: 650px;
+    margin: 30px auto;
+    box-sizing: border-box;
+}
+
+.showcase-header {
+    text-align: center;
+}
+
+.showcase-header h2 {
+    color: #292929;
+    font-size: 26px;
+}
+
+.showcase-header p {
+    font-size: 16px;
+}
+
+.showcase-workouts {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+}
+
+.showcase-card {
+    background-color: #FFF1B8;
+    color: #292929;
+    border: 2px solid #292929;
+    border-radius: 12px;
+    padding: 18px 8px;
+    font-family: "Trebuchet MS", Arial, sans-serif;
+    font-size: 17px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.showcase-card:hover {
+    background-color: #292929;
+    color: #FFF1B8;
+}
+
+.showcase-card:focus-visible {
+    outline: 3px solid #D63384;
+    outline-offset: 3px;
+}
+
+.showcase-info {
+    background-color: #292929;
+    color: white;
+    border-radius: 12px;
+    padding: 15px;
+    margin-top: 16px;
+    text-align: center;
+}
+
+.showcase-info h3 {
+    color: #FFF1B8;
+    margin-top: 0;
+}
+
+.showcase-info p {
+    line-height: 1.5;
+}
+</style>
+
+<!-- JavaScript: Changes the information when a workout is clicked -->
+<script>
+(function () {
+    const box = document.querySelector(".showcase");
+    if (!box) return;
+
+    const descriptions = {
+        easy: {
+            title: "Easy Run 🌸",
+            description: "Easy runs help build endurance while allowing your body to recover. The pace should feel comfortable."
+        },
+        intervals: {
+            title: "Interval Training ⚡",
+            description: "Interval workouts combine fast running with recovery periods. They help improve speed and fitness."
+        },
+        long: {
+            title: "Long Run 🌷",
+            description: "Long runs help develop endurance and prepare runners for longer distances."
+        },
+        strength: {
+            title: "Strength Training 💛",
+            description: "Strength training helps develop stronger muscles and supports good running form."
+        }
+    };
+
+    const buttons = box.querySelectorAll(".showcase-card");
+    const title = box.querySelector("#showcase-title");
+    const description = box.querySelector("#showcase-description");
+
+    buttons.forEach(function (button) {
+        button.addEventListener("click", function () {
+            const workout = descriptions[button.dataset.workout];
+
+            title.textContent = workout.title;
+            description.textContent = workout.description;
+        });
+    });
+})();
+</script>
 
 <!-- Footer: Emma Taggi -->
 <footer>Built by Emma Taggi &middot; BMIS 235</footer>
